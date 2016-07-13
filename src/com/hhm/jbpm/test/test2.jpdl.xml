@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="员工请假流程定义" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="236,16,48,48" name="start1">
+      <transition g="-117,-22" name="xx" to="员工提交请假申请"/>
+   </start>
+   <end g="228,334,48,48" name="end1"/>
+   <task g="185,108,145,50" name="员工提交请假申请">
+      <transition g="-93,-22" name="to 项目组长审批" to="项目组长审批"/>
+   </task>
+   <task g="176,209,159,49" name="项目组长审批">
+      <transition g="-50,-22" name="to end1" to="end1"/>
+      <transition g="-69,-22" name="to 经理审批" to="经理审批"/>
+   </task>
+   <task g="387,204,163,54" name="经理审批">
+   		<assignment-handler class="com.hhm.jbpm.test.SetAssignee"></assignment-handler>
+      <transition g="-50,-22" name="to end1" to="end1"/>
+   </task>
+</process>

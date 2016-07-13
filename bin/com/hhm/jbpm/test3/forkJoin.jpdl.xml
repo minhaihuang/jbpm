@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="forkJoin" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="343,12,48,48">
+      <transition name="to 确认型号" to="确认型号" g="-69,-22"/>
+   </start>
+   <task name="确认型号" g="290,75,151,41" assignee="张三">
+      <transition name="to fork1" to="fork1" g="-52,-22"/>
+   </task>
+   <fork name="fork1" g="344,130,48,48">
+      <transition name="to 生产A零件" to="生产A零件" g="-77,-22"/>
+      <transition name="to 生产B零件" to="生产B零件" g="-77,-22"/>
+   </fork>
+   <task name="生产A零件" g="215,179,109,45" assignee="李四">
+      <transition name="to 发货A零件" to="发货A零件" g="-77,-22"/>
+   </task>
+   <task name="发货A零件" g="214,266,112,40" assignee="李四">
+      <transition name="to join1" to="join1" g="-49,-22"/>
+   </task>
+   <task name="生产B零件" g="404,178,123,46" assignee="王五">
+      <transition name="to 发货B零件" to="发货B零件" g="-77,-22"/>
+   </task>
+   <task name="发货B零件" g="405,259,120,44" assignee="王五">
+      <transition name="to join1" to="join1" g="-49,-22"/>
+   </task>
+   <join name="join1" g="340,316,48,48">
+      <transition name="to 组装" to="组装" g="-45,-22"/>
+   </join>
+   <task name="组装" g="328,384,73,39" assignee="赵六">
+      <transition name="to end1" to="end1" g="-50,-22"/>
+   </task>
+   <end name="end1" g="342,443,48,48"/>
+</process>

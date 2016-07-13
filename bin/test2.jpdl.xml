@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="鍛樺伐璇峰亣娴佺▼瀹氫箟" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="236,16,48,48" name="start1">
+      <transition g="6,608" name="xx" to="鍛樺伐鎻愪氦璇峰亣鐢宠"/>
+   </start>
+   <end g="228,334,48,48" name="end1"/>
+   <task candidate-users="寮犱笁5,寮犱笁6" g="185,108,145,50" name="鍛樺伐鎻愪氦璇峰亣鐢宠">
+      <transition g="-93,-22" name="to 椤圭洰缁勯暱瀹℃壒" to="椤圭洰缁勯暱瀹℃壒"/>
+   </task>
+   <task candidate-users="#{usernames}" g="176,209,159,49" name="椤圭洰缁勯暱瀹℃壒">
+      <transition g="-50,-22" name="to end1" to="end1"/>
+      <transition g="-69,-22" name="to 缁忕悊瀹℃壒" to="缁忕悊瀹℃壒"/>
+   </task>
+   <task g="387,204,163,54" name="缁忕悊瀹℃壒">
+   		<assignment-handler class="com.rupeng.jbpmDemo.SetCandidateUsers"/>
+      <transition g="-50,-22" name="to end1" to="end1"/>
+   </task>
+</process>
